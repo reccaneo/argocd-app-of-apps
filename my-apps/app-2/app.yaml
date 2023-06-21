@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-app2
+  labels:
+    app: nginx-app2
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: nginx-app2
+  template:
+    metadata:
+      labels:
+        app: nginx-app2
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: "10Mi"
+            cpu: "100m"
+          requests:
+            memory: "10Mi"
+            cpu: "100m"
